@@ -10,14 +10,18 @@ namespace CocktailsConsole.Tables
     class Accessory : Ingridient
     {
         public string type { get; set; }
+        public string Name { get; set; }
+
+
         public Accessory()
         {
 
         }
-        public Accessory(string type, string name) :base(name)
+        public Accessory(string type, string name)
         {
+            Name = name.ToLower();
             this.type = type;
         }
 
-}
+    }
 }

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CocktailsConsole.Tables;
 using CocktailsConsole.Data;
+using System.Runtime.Remoting.Contexts;
+using System.Data.Entity;
 
 namespace CocktailsConsole
 {
@@ -12,51 +14,41 @@ namespace CocktailsConsole
     {
         static void Main(string[] args)
         {
-            //using (EnityBase ctx = new EnityBase())
-            //{
-            //    var test = ctx.drink.Include("Items").Include("container").ToList<Drink>();
-            //    Console.Read();
-            //    Drink drink = new Drink("a",new Container(10,"Big"), new List<Item> { new Item(10, new Ingridient("test"))});
-
-            //    ctx.drink.Add(drink);
-            //    ctx.SaveChanges();
-            //}
-
-            using (CockTailsContext context = new CockTailsContext(@"Cocktails"))
+            DataController data = new DataController();
+            //data.AddIndgredients();
+            Drink margerita = new Drink();
+            margerita.name = "Margerita";
+            margerita.Items = new List<Item>
             {
+                new Item(60, new Liquid("green", false, "lime Jucie")),
+                new Item(30, new Liquid("withe", false, "lriplesec")),
+                new Item(60, new Liquid("yellow", true, "lequila")),
+                new Item(1,new Accessory("rim", "salt")),
+                new Item(1,new Accessory("crushed", "ice")),
+                new Item(1, new Accessory("segment", "lime")) };
+            margerita.container = new Container(350, "Small round Glas");
+            data.CreateDrink(margerita);
+
+            Drink maitai = new Drink();
+            maitai.name = "Maitai";
+            maitai.Items = new List<Item>
+            {
+                new Item(60, new Liquid("dark reed", true, "Dark Rum")),
+                new Item(30, new Liquid("red", false, "Orange Curacao")),
+                new Item(60, new Liquid("green", false, "Lime juice")),
+                new Item(60, new Liquid("dark green", false, "Almond syrup")),
+                new Item(1,new Accessory("rim", "salt")),
+                new Item(1,new Accessory("section", "lime")),
+                new Item(1, new Accessory("segment", "lime")) };
+            maitai.container = new Container(350, "Small round Glas");
+            data.CreateDrink(maitai);
 
 
-                Liquid limeJucie = new Liquid("Green", false, "Lime Jucie");
-                Liquid triplesec = new Liquid("White", false, "Triplesec");
-                Liquid tequila = new Liquid("Yellow", true, "tequila");
-                Accessory saltRim = new Accessory("Rim", "Salt");
-                Accessory crushIce = new Accessory("Crushed", "Ice");
-                Accessory limeSegment = new Accessory("Segment", "Lime");
+            Console.WriteLine("!");
+            Drink mar = data.GetDrink("Margerita");
+            Console.WriteLine($"Name: {mar.name}\ncontainer: {mar.container.shape}\nAmount of items : {mar.Items.Count}");
+            Console.Read();
 
-                context.liquidContext.Add(limeJucie);
-                context.liquidContext.Add(triplesec);
-
-                context.accessoriesContext.Add(saltRim);
-                context.accessoriesContext.Add(crushIce);
-                context.accessoriesContext.Add(limeSegment);
-                context.SaveChanges();
-
-                Drink margarita = new Drink()
-                {
-                    name = "Margarita",
-                    container = new Container(),
-                    Items = new List<Item>() { 
-                        new Item(60,(Ingridient)context.liquidContext.Where(x => x.name == "Lime Jucie")),
-                        new Item(30, (Ingridient)context.liquidContext.Where(x => x.name == "Triplesec")),
-                        new Item(60,(Ingridient)context.liquidContext.Where(x => x.name == "tequila")) }
-                };
-                context.drink.Add(margarita);
-                context.SaveChanges();
-                Drink margaritaOld = context.drink.Where(x => x.name == "margarita").FirstOrDefault();
-                Console.WriteLine();
-            }
-        
-            
         }
     }
 }

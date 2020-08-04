@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace CocktailsConsole.Data
 {
+    /// <summary>
+    /// The class to have all the dbsets.
+    /// </summary>
     class CockTailsContext : DbContext
     {
+        
         public DbSet<Drink> drink { get; set; }
         public DbSet<Container> containerContext { get; set; }
         public DbSet<Item> itemContext { get; set; }

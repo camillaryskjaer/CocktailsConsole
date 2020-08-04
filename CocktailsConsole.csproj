@@ -54,10 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\CockTailsContext.cs" />
+    <Compile Include="Data\DataController.cs" />
+    <Compile Include="Interfaces\Iingridient.cs" />
     <Compile Include="Tables\Accessory.cs" />
     <Compile Include="Tables\Container.cs" />
     <Compile Include="Tables\Drink.cs" />
-    <Compile Include="Tables\EnityBase.cs" />
     <Compile Include="Tables\Ingridient.cs" />
     <Compile Include="Tables\Item.cs" />
     <Compile Include="Tables\Liquid.cs" />

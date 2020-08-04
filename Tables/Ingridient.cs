@@ -9,17 +9,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CocktailsConsole.Tables
 {
     [Table("Ingridient")]
-    class Ingridient : EnityBase
+    class Ingridient : Iingridient
     {
-        public string name { get; set; }
+        [Key]
+        public int id { get; set; }        
+
         public Ingridient()
         {
 
         }
-        public Ingridient(string name)
-        {
-            this.name = name;
-        }
-
     }
 }

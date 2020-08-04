@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace CocktailsConsole.Tables
 {
-    class Container : EnityBase
+    class Container
     {
+        [Key]
+        public int ContainerId { get; set; }
         public int maxAmount { get; set; }
         public string shape { get; set; }
         public Container()
