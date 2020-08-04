@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace CocktailsConsole.Tables
 {
-    class EnityBase : DbContext
+    class EnityBase
     {
         public int id { get; set; }           
         

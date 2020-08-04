@@ -39,6 +39,7 @@ namespace CocktailsConsole
                 context.accessoriesContext.Add(saltRim);
                 context.accessoriesContext.Add(crushIce);
                 context.accessoriesContext.Add(limeSegment);
+                context.SaveChanges();
 
                 Drink margarita = new Drink()
                 {
