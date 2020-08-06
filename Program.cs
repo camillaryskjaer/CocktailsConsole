@@ -17,6 +17,7 @@ namespace CocktailsConsole
             DataController data = new DataController();
             //data.AddIndgredients();
             Drink margerita = new Drink();
+            //Hvorfor sender du ikke navnet med i konstruktøren? Kan man have en drink uden et navn? 
             margerita.name = "Margerita";
             margerita.Items = new List<Item>
             {
