@@ -144,7 +144,7 @@ namespace CocktailsConsole.Data
                     }
                     context.SaveChanges();
 
-
+//Hvad skal alle disse tomme linier? Det gør din kode sværere at læse!
 
                 }
             }
